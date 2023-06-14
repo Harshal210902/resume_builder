@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MdEdit } from "react-icons/md";
+import { AiFillDelete  } from "react-icons/ai";
 import { BsToggleOn } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GrCircleInformation } from "react-icons/gr";
@@ -24,6 +25,10 @@ export default function SingleSection({
       )
     );
     setEdit(false);
+  };
+
+  const handleDelete = (id) => {
+    setSections(sections.filter((section) => section.id !== id));
   };
 
   const handleDone = (id) => {
@@ -70,6 +75,9 @@ export default function SingleSection({
           >
             <MdEdit />
           </span>
+          <span className="icon" onClick={() => handleDelete(section.id)}>
+              <AiFillDelete />
+            </span>
           <span className="icon" onClick={() => handleDone(section.id)}>
             <BsToggleOn />
           </span>
